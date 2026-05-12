@@ -122,13 +122,33 @@ All major workflows converge on the same architectural pattern: **Research → P
 > *Note: yellow tags are sub-loops — steps that repeat inside a parent step (e.g. per task, per story, or until a verify condition passes).*
 
 ### Others
-- [Cross-Model (Claude Code + Codex) Workflow](development-workflows/cross-model-workflow/cross-model-workflow.md) [![Implemented](!/tags/implemented.svg)](development-workflows/cross-model-workflow/cross-model-workflow.md)
 - [RPI](development-workflows/rpi/rpi-workflow.md) [![Implemented](!/tags/implemented.svg)](development-workflows/rpi/rpi-workflow.md)
 - [Ralph Wiggum Loop](https://www.youtube.com/watch?v=eAtvoGlpeRU) [![Implemented](!/tags/implemented.svg)](https://github.com/shanraisshan/ralph-wiggum-self-evolving-loop)
 - [Andrej Karpathy (Founding Member, OpenAI) Workflow](https://x.com/karpathy/status/2015883857489522876)
 - [Peter Steinberger (Creator of OpenClaw) Workflow](https://youtu.be/8lF7HmQ_RgY?t=2582)
 - Boris Cherny (Creator of Claude Code) Workflow — [13 Tips](tips/claude-boris-13-tips-03-jan-26.md) · [10 Tips](tips/claude-boris-10-tips-01-feb-26.md) · [12 Tips](tips/claude-boris-12-tips-12-feb-26.md) · [2 Tips](tips/claude-boris-2-tips-25-mar-26.md) · [15 Tips](tips/claude-boris-15-tips-30-mar-26.md) · [6 Tips](tips/claude-boris-6-tips-16-apr-26.md) [![Boris](!/tags/boris-cherny.svg)](https://x.com/bcherny)
 - Thariq (Anthropic) Workflow — [Skills](tips/claude-thariq-tips-17-mar-26.md) · [Session Management](tips/claude-thariq-tips-16-apr-26.md) [![Thariq](!/tags/thariq.svg)](https://x.com/trq212)
+
+<p align="center">
+  <img src="!/claude-jumping.svg" alt="section divider" width="60" height="50">
+</p>
+
+## 🔀 CROSS-MODEL WORKFLOWS
+
+Use Claude Code together with other models — Codex, Gemini, GPT, Kimi, DeepSeek, local — via three mechanisms:
+
+- **Plugin** — another model's CLI runs inside Claude Code (slash commands like `/codex:review`)
+- **MCP** — Claude Code calls another model as a tool through Model Context Protocol
+- **Router** — Claude Code's API endpoint is swapped to a different provider
+
+Methodology: [Cross-Model (Claude Code + Codex) Workflow](development-workflows/cross-model-workflow/cross-model-workflow.md) [![Implemented](!/tags/implemented.svg)](development-workflows/cross-model-workflow/cross-model-workflow.md) — manual two-terminal flow with Plan in Claude, QA-Review in Codex.
+
+| Name | ★ | Type | Bridges to | What it does |
+|------|---|------|------------|--------------|
+| [musistudio/claude-code-router](https://github.com/musistudio/claude-code-router) | 34k | Router | OpenRouter, DeepSeek, Ollama, Gemini, Kimi, Qwen, Groq, +more | Routes Claude Code's API to any compatible provider, with per-task model selection |
+| [router-for-me/CLIProxyAPI](https://github.com/router-for-me/CLIProxyAPI) | 32k | Router | Gemini CLI, Codex, Claude Code, Antigravity | Wraps each CLI as an OpenAI/Gemini/Claude/Codex-compatible API service |
+| [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc) | 18k | Plugin | Codex / GPT-5 | Official OpenAI plugin: `/codex:review`, `/codex:adversarial-review`, `/codex:rescue` inside Claude Code |
+| [BeehiveInnovations/pal-mcp-server](https://github.com/BeehiveInnovations/pal-mcp-server) | 12k | MCP | Gemini, OpenAI, Azure, Grok, Ollama, OpenRouter (50+ models) | Multi-model MCP server (formerly `zen-mcp-server`) — call other models as Claude tools |
 
 <p align="center">
   <img src="!/claude-jumping.svg" alt="section divider" width="60" height="50">
