@@ -179,7 +179,7 @@ Repos primarily known as curated libraries of subagent definitions (`.claude/age
 
 | Name | ★ | <img src="!/tags/a.svg" height="14"> |
 |------|---|---|
-| [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) | 97k | 188 |
+| [msitarzewski/agency-agents](https://github.com/msitarzewski/agency-agents) | 98k | 188 |
 | [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents) | 20k | 146 |
 
 <p align="center">
